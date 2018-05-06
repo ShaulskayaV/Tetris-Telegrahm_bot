@@ -56,7 +56,7 @@ class Board(QFrame):
         return self.board[(y*Board.BoardWidth)+x]
 
     def setShape(self,x,y,shape):
-        self.board[(y*Board.BoardWidth)+x]= shape
+        self.board[(y*Board.BoardWidth)+x] = shape
 
     def squareWidth(self):
         return self.contentsRect().width()//Board.BoardWidth
@@ -67,7 +67,7 @@ class Board(QFrame):
     def start(self):
         if self.isPaused:
             return
-        self.isStarted=True
+        self.isStarted = True
         self.isWaitingAfterLime = False
         self.numLinesRemoved = 0
         self.clearBoard()
@@ -90,19 +90,19 @@ class Board(QFrame):
         self.update()
 
     def paintEvent(self,event):
-        painter= QPainter(self)
-        rect=self.contentsRect()
+        painter = QPainter(self)
+        rect = self.contentsRect()
 
         boardTop = rect.bottom()- Board.BoardHeight* self.squareHeight()
 
         for i in range(Board.BoardHeight):
             for j in range(Board.BoardWidth):
-                shape= self.shapeAt(j,Board.BoardHeight-i-1)
+                shape = self.shapeAt(j,Board.BoardHeight-i-1)
                 if shape != Tetrominoe.NoShape:
                     self.drawSquare(painter,rect.left()+ j*self.squareWidth(),boardTop+ i*self.squareHeight(),shape)
                 if self.curPiece.shape() != Tetrominoe.NoShape:
                     for i in range(4):
 
-                        x=self.curX+ self.curPiece.x(i)
-                        y=self.curY - self.curPiece.y(i)
+                        x = self.curX+ self.curPiece.x(i)
+                        y = self.curY - self.curPiece.y(i)
                         self.drawSquare(painter, rect.left() + x * self.squareWidth(),boardTop + (Board.BoardHeight - y - 1) * self.squareHeight(),self.curPiece.shape())
