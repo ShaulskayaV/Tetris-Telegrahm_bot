@@ -9,39 +9,50 @@ class Tetris(QMainWindow):
 
     def __init__(self):
         super().__init__()
+
         self.initUI()
 
     def initUI(self):
+
         self.tboard = Board(self)
         self.setCentralWidget(self.tboard)
 
         self.statusbar = self.statusBar()
         self.tboard.msg2Statusba[str].connect(self.statusbar.showMessage)
+
         self.tboard.start()
+
         self.resize(180,380)
         self.center()
         self.setWindowTitle('Tetris')
         self.show()
 
     def center(self):
+
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move ((screen.width()-size.width())/2, (screen.height()-size.height())/2)
+        self.move ((screen.width()-size.width())/2,
+            (screen.height()-size.height())/2)
 
 
 class Board(QFrame):
+
     msg2Statusbar = pyqtSignal(str)
+
     BoardWidth = 10
     BoardHeight = 22
     Speed = 300
 
     def __init__(self,parent):
         super().__init__(parent)
+
         self.initBoard()
 
     def initBoard(self):
+
         self.timer=QBasicTimer()
         self.isWaitingAfterLine = False
+
         self.curX = 0
         self.curY = 0
         self.numLinesRemoved = 0
@@ -65,24 +76,30 @@ class Board(QFrame):
         return self.contentsRect().height()//Board.BoardHeight
 
     def start(self):
+
         if self.isPaused:
             return
+
         self.isStarted = True
         self.isWaitingAfterLine = False
         self.numLinesRemoved = 0
         self.clearBoard()
 
         self.msg2Statusbar.emit(str(self.numLinesRemoved))
+
         self.newPiece()
         self.timer.start(Board.Speed,self)
 
     def pause(self):
+
         if not self.isStarted:
             return
+
         self.isPaused = not self.isPaused
         if self.isPaused:
             self.timer.stop()
             self.msg2Statusbar.emit('paused')
+
         else:
             self.timer.start(Board.Speed,self)
             self.msg2Statusbar.emit(str(self.numLinesRemoved))
@@ -90,6 +107,7 @@ class Board(QFrame):
         self.update()
 
     def paintEvent(self, event):
+
         painter = QPainter(self)
         rect = self.contentsRect()
 
@@ -98,15 +116,24 @@ class Board(QFrame):
         for i in range(Board.BoardHeight):
             for j in range(Board.BoardWidth):
                 shape = self.shapeAt(j, Board.BoardHeight-i-1)
-                if shape != Tetrominoe.NoShape:
-                    self.drawSquare(painter, rect.left()+ j*self.squareWidth(), boardTop+ i*self.squareHeight(), shape)
-                if self.curPiece.shape() != Tetrominoe.NoShape:
-                    for i in range(4):
 
-                        x = self.curX+ self.curPiece.x(i)
-                        y = self.curY - self.curPiece.y(i)
-                        self.drawSquare(painter, rect.left() + x * self.squareWidth(), boardTop + (Board.BoardHeight - y - 1) * self.squareHeight(), self.curPiece.shape())
+                if shape != Tetrominoe.NoShape:
+                    self.drawSquare(painter,
+                        rect.left()+ j*self.squareWidth(),
+                        boardTop+ i*self.squareHeight(), shape)
+
+        if self.curPiece.shape() != Tetrominoe.NoShape:
+
+            for i in range(4):
+
+                x = self.curX+ self.curPiece.x(i)
+                y = self.curY - self.curPiece.y(i)
+                self.drawSquare(painter, rect.left() + x * self.squareWidth(),
+                    boardTop + (Board.BoardHeight - y - 1) * self.squareHeight(),
+                    self.curPiece.shape())
+
     def keyPressEvent(self, event):
+
         if not self.isStart or self.curPiece.shape() == Tetrominoe.NoShape:
             super(Board, self).keyPressEvent(event)
             return
@@ -260,7 +287,8 @@ class Board(QFrame):
 
     def DrawSquare(self, painter, x, y, shape):
 
-        colorTable = [0x000000, 0xCC6666, 0x66CC66, 0x6666CC, 0xCCCC66, 0xCC66CC, 0x66CCCC, 0xDAAA00]
+        colorTable = [0x000000, 0xCC6666, 0x66CC66, 0x6666CC,
+                      0xCCCC66, 0xCC66CC, 0x66CCCC, 0xDAAA00]
 
         color = QColor(colorTable[shape])
         painter.fillRect(x + 1, y + 1, self.squareWidth() - 2, self.squareHeight() - 2, color)
@@ -270,8 +298,10 @@ class Board(QFrame):
         painter.drawLine(x, y, x + self.squareWidth() - 1, y)
 
         painter.setPen(color.darker())
-        painter.drawLine(x + 1, y + self.squareHeight() - 1, x + self.squareWidth() - 1, y + self.squareHeight() - 1)
-        painter.drawLine(x + self.squareWidth() - 1, y + self.squareHeight() - 1, x +self.squareWidth(), y + 1)
+        painter.drawLine(x + 1, y + self.squareHeight() - 1,
+                         x + self.squareWidth() - 1, y + self.squareHeight() - 1)
+        painter.drawLine(x + self.squareWidth() - 1,
+                         y + self.squareHeight() - 1, x +self.squareWidth(), y + 1)
 
 
 class Tetrominoe:
@@ -287,6 +317,7 @@ class Tetrominoe:
 
 
 class Shape(object):
+    
 
 
 
