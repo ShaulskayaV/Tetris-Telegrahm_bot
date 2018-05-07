@@ -6,7 +6,6 @@ from PyQt5.QtCore import Qt, QBasicTimer, pyqtSignal
 from PyQt5.QtGui import QPainter, QColor
 
 class Tetris(QMainWindow):
-
     def __init__(self):
         super().__init__()
 
@@ -18,7 +17,7 @@ class Tetris(QMainWindow):
         self.setCentralWidget(self.tboard)
 
         self.statusbar = self.statusBar()
-        self.tboard.msg2Statusba[str].connect(self.statusbar.showMessage)
+        self.tboard.msg2Statusbar[str].connect(self.statusbar.showMessage)
 
         self.tboard.start()
 
