@@ -179,7 +179,6 @@ class Board(QFrame):
             self.board.append(Tetrominoe.NoShape)
 
     def dropDown(self):
-
         newY = self.curY
 
         while newY > 0:
@@ -192,12 +191,10 @@ class Board(QFrame):
         self.pieceDropped()
 
     def oneLineDown(self):
-
         if not self.tryMove(self.curPiece, self.curX, self.curY - 1):
             self.pieceDropped()
 
     def pieceDropped(self):
-
         for i in range(4):
 
             x = self.curX + self.curPiece.x(i)
