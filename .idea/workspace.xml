@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71576f94-fa23-4512-87b8-b5958496c2bc" name="Default" comment="....">
+    <list default="true" id="71576f94-fa23-4512-87b8-b5958496c2bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="проба пера.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/проба пера.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3953">
-              <caret line="409" column="0" lean-forward="true" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="0" />
+            <state relative-caret-position="320">
+              <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -225,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525763312966</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="....">
+      <created>1525763319695</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1525763319695</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -263,7 +270,8 @@
     <MESSAGE value="Коррекция" />
     <MESSAGE value="Класс Shape хранит информацию о частях тетриса. Набор coordsTable содержит в себе всевозможные значения координат частей тетриса из которого все части берут значения своих координат. Также создается пустой список координат, который будет хранить текущие координаты частей тетриса." />
     <MESSAGE value="исправления" />
-    <option name="LAST_COMMIT_MESSAGE" value="исправления" />
+    <MESSAGE value="...." />
+    <option name="LAST_COMMIT_MESSAGE" value="...." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -292,8 +300,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/проба пера.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3953">
-          <caret line="409" column="0" lean-forward="true" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="0" />
+        <state relative-caret-position="320">
+          <caret line="326" column="20" lean-forward="false" selection-start-line="326" selection-start-column="20" selection-end-line="326" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
